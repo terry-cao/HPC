@@ -1,14 +1,7 @@
 nav:
   - Home: index.md
-  - Blog: 
-      - blog/2020-12-01-numba.md
-      - blog/2021-05-06-tf.md
-      - blog/2021-06-18-srun.md
-      - blog/2022-02-02-Changes_to_Slurm_srun_for_interactive_jobs.md
-      - blog/2022-10-04-python2to3.md
-      - blog/2022-03-05-local-io-performance.md
-      - blog/2022-12-19-windows_ssh.md
-      - blog/2023-01-10-using_specific_module_versions_on_hpc.md
+  - Blog:
+      - index: blog/index.md
   - Documentation:
       - Documentation Home: Documentation/index.md
       - Getting Started: Documentation/getting_started.md
@@ -201,3 +194,11 @@ extra_css:
 site_name: NREL HPC 
 repo_url: https://github.com/NREL/HPC/tree/gh-pages
 repo_name: NREL/HPC
+plugins:
+  - blog:
+      authors_file: blog/authors.yml
+      enabled: true
+      blog_dir: blog
+      post_dir: blog/posts
+      post_readtime: false
+      categories: false
