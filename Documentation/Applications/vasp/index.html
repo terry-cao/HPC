@@ -1,0 +1,5015 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../starccm/">
+      
+      
+        <link rel="next" href="../wrf/">
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.2, mkdocs-material-9.2.5">
+    
+    
+      
+        <title>VASP - NREL HPC</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.0e669242.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","UA-189117140-2"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","UA-189117140-2",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=UA-189117140-2",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#accessing-vasp-on-nrels-hpc-clusters" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="NREL HPC" class="md-header__button md-logo" aria-label="NREL HPC" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            NREL HPC
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              VASP
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/NREL/HPC/tree/gh-pages" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    NREL/HPC
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../blog/" class="md-tabs__link">
+          
+  
+    
+  
+  Blog
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../" class="md-tabs__link">
+          
+  
+    
+  
+  Documentation
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../Friendly_User/Getting_Started/" class="md-tabs__link">
+          
+  
+    
+  
+  Kestrel Friendly Users
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="NREL HPC" class="md-nav__button md-logo" aria-label="NREL HPC" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    NREL HPC
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/NREL/HPC/tree/gh-pages" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    NREL/HPC
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../blog/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Blog
+  </span>
+  
+
+            </a>
+            
+              <label class="md-nav__link " for="__nav_2">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Blog
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
+        
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Archive
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            Archive
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../blog/archive/2022/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2022
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../blog/archive/2021/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2021
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../blog/archive/2020/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2020
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Documentation
+  </span>
+  
+
+            </a>
+            
+              <label class="md-nav__link " for="__nav_3">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Documentation
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting_started/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Getting Started
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../help/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Help and Support
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../Systems/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Systems
+  </span>
+  
+
+            </a>
+            
+              <label class="md-nav__link " for="__nav_3_4">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            Systems
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4_2" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../Systems/Kestrel/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Kestrel
+  </span>
+  
+
+            </a>
+            
+              <label class="md-nav__link " for="__nav_3_4_2">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            Kestrel
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Systems/Kestrel/running/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Running on Kestrel
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Systems/Kestrel/modules/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Modules
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Systems/Kestrel/filesystems/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Filesystems
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4_3" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../Systems/Eagle/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Eagle
+  </span>
+  
+
+            </a>
+            
+              <label class="md-nav__link " for="__nav_3_4_3">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_4_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            Eagle
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4_3_2" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../Systems/Eagle/Running/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Running on Eagle
+  </span>
+  
+
+            </a>
+            
+              <label class="md-nav__link " for="__nav_3_4_3_2">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_3_4_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_4_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            Running on Eagle
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Systems/Eagle/Running/eagle_partitions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Partitions and Scheduling
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Systems/Eagle/Running/eagle_job_priorities/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Job Priorities
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Systems/Eagle/Running/batch_jobs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Batch Jobs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Systems/Eagle/Running/interactive_jobs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Interactive Jobs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Systems/Eagle/Running/multiple_sub_jobs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Multiple Sub-Jobs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Systems/Eagle/Running/sample_sbatch/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Sample Batch Scripts
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Systems/Eagle/Running/debugging_at_scale/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Debugging at Scale
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Systems/Eagle/Running/monitor_and_control/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Monitor and Control Commands
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Systems/Eagle/modules/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Modules
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Systems/Eagle/lustrebestpractices/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Filesystems
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4_4" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../Systems/Swift/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Swift
+  </span>
+  
+
+            </a>
+            
+              <label class="md-nav__link " for="__nav_3_4_4">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_4_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_4_4">
+            <span class="md-nav__icon md-icon"></span>
+            Swift
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Systems/Swift/running/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Running on Swift
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Systems/Swift/modules/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Modules
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Systems/Swift/filesystems/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Filesystems
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4_5" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../Systems/Vermilion/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Vermilion
+  </span>
+  
+
+            </a>
+            
+              <label class="md-nav__link " for="__nav_3_4_5">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_4_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_4_5">
+            <span class="md-nav__icon md-icon"></span>
+            Vermilion
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Systems/Vermilion/running/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Running on Vermilion
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Systems/Vermilion/modules/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Modules
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Systems/Vermilion/filesystems/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Filesystems
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5" >
+        
+          <label class="md-nav__link" for="__nav_3_5" id="__nav_3_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Managing your Data
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_5">
+            <span class="md-nav__icon md-icon"></span>
+            Managing your Data
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Managing_Data/file_permissions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Unix File Permissions
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Managing_Data/mss/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Mass Storage System
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5_3" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../Managing_Data/Transferring_Files/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Transferring Files
+  </span>
+  
+
+            </a>
+            
+              <label class="md-nav__link " for="__nav_3_5_3">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_5_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_5_3">
+            <span class="md-nav__icon md-icon"></span>
+            Transferring Files
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Managing_Data/Transferring_Files/FileZilla/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FileZilla
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Managing_Data/Transferring_Files/globus/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Transferring Files with Globus
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Managing_Data/Transferring_Files/winscp/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    WinSCP
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6" >
+        
+          <label class="md-nav__link" for="__nav_3_6" id="__nav_3_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Environment
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_6">
+            <span class="md-nav__icon md-icon"></span>
+            Environment
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Environment/shell/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Shell Startup
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Environment/Customization/conda/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Conda
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6_3" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../Environment/Building_Packages/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Building an Application
+  </span>
+  
+
+            </a>
+            
+              <label class="md-nav__link " for="__nav_3_6_3">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_6_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_6_3">
+            <span class="md-nav__icon md-icon"></span>
+            Building an Application
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Environment/Building_Packages/acquire/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Acquire
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Environment/Building_Packages/config_make_install/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Config Make Install
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Environment/Building_Packages/modules/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Modules
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_7" checked>
+        
+          <label class="md-nav__link" for="__nav_3_7" id="__nav_3_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Applications
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_7_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_7">
+            <span class="md-nav__icon md-icon"></span>
+            Applications
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ansys/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ANSYS CFD
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../comsol/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    COMSOL
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fenics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FEniCS
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../gams/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    GAMS
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../gaussian/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Gaussian
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../gurobi/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Gurobi
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lammps/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    LAMMPS
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_7_8" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../Matlab/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    MATLAB
+  </span>
+  
+
+            </a>
+            
+              <label class="md-nav__link " for="__nav_3_7_8">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_7_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_7_8">
+            <span class="md-nav__icon md-icon"></span>
+            MATLAB
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Matlab/batch/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Batch Mode
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Matlab/interactive/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Interactive Mode
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Matlab/parallel/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Parallel Computing Toolbox
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Matlab/versions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Versions and Licenses
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../qchem/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Q-Chem
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../starccm/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    STAR-CCM+
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    VASP
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    VASP
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#accessing-vasp-on-nrels-hpc-clusters" class="md-nav__link">
+    Accessing VASP on NREL's HPC Clusters
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#supported-versions" class="md-nav__link">
+    Supported Versions
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#getting-started" class="md-nav__link">
+    Getting Started
+  </a>
+  
+    <nav class="md-nav" aria-label="Getting Started">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#input-files" class="md-nav__link">
+    Input Files
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-job-scripts" class="md-nav__link">
+    Example Job Scripts
+  </a>
+  
+    <nav class="md-nav" aria-label="Example Job Scripts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#eagle" class="md-nav__link">
+    Eagle
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#swift" class="md-nav__link">
+    Swift
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vermilion" class="md-nav__link">
+    Vermilion
+  </a>
+  
+    <nav class="md-nav" aria-label="Vermilion">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#workarounds" class="md-nav__link">
+    Workarounds
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    Troubleshooting
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#performance-recommendations" class="md-nav__link">
+    Performance Recommendations
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wrf/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    WRF
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_8" >
+        
+          <label class="md-nav__link" for="__nav_3_8" id="__nav_3_8_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Development
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_8">
+            <span class="md-nav__icon md-icon"></span>
+            Development
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_8_1" >
+        
+          <label class="md-nav__link" for="__nav_3_8_1" id="__nav_3_8_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Languages
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_8_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_8_1">
+            <span class="md-nav__icon md-icon"></span>
+            Languages
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_8_1_1" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../Development/Languages/Julia/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Julia
+  </span>
+  
+
+            </a>
+            
+              <label class="md-nav__link " for="__nav_3_8_1_1">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_3_8_1_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_8_1_1">
+            <span class="md-nav__icon md-icon"></span>
+            Julia
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Development/Languages/Julia/julia_install/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Installing Julia
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Development/Languages/Julia/julia_tour/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tour of Julia
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Development/Languages/Julia/julia_parallel/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Julia Parallel Computing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Development/Languages/Julia/julia_ccall_pycall/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    PyCall and CCall
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Development/Languages/c%2B%2B/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    C++
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Development/Languages/r/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    R
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Development/Languages/bash/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Bash
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_8_1_5" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../Development/Languages/Fortran/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Fortran
+  </span>
+  
+
+            </a>
+            
+              <label class="md-nav__link " for="__nav_3_8_1_5">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_3_8_1_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_8_1_5">
+            <span class="md-nav__icon md-icon"></span>
+            Fortran
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Development/Languages/Fortran/f90_advanced/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Advanced
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_8_1_6" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../Development/Languages/Python/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Python
+  </span>
+  
+
+            </a>
+            
+              <label class="md-nav__link " for="__nav_3_8_1_6">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_3_8_1_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_8_1_6">
+            <span class="md-nav__icon md-icon"></span>
+            Python
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Development/Languages/Python/dask/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Dask
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_8_2" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../Development/Jupyter/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Jupyter
+  </span>
+  
+
+            </a>
+            
+              <label class="md-nav__link " for="__nav_3_8_2">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_8_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_8_2">
+            <span class="md-nav__icon md-icon"></span>
+            Jupyter
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Development/Jupyter/jupyterhub/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    JupyterHub
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_8_3" >
+        
+          <label class="md-nav__link" for="__nav_3_8_3" id="__nav_3_8_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Programming Models
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_8_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_8_3">
+            <span class="md-nav__icon md-icon"></span>
+            Programming Models
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Development/Programming_Models/mpi/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    MPI
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Development/Compilers/rosetta_stone/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Compilers
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_8_5" >
+        
+          <label class="md-nav__link" for="__nav_3_8_5" id="__nav_3_8_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Build Tools
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_8_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_8_5">
+            <span class="md-nav__icon md-icon"></span>
+            Build Tools
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Development/Build_Tools/cmake/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CMake
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Development/Build_Tools/spack/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Spack
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Development/Build_Tools/git/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Git
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_8_6" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../Development/Libraries/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Libraries
+  </span>
+  
+
+            </a>
+            
+              <label class="md-nav__link " for="__nav_3_8_6">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_8_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_8_6">
+            <span class="md-nav__icon md-icon"></span>
+            Libraries
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Development/Libraries/howto/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Libraries How-to
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Development/Libraries/fftw/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FFTW
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Development/Libraries/hdf5/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HDF5
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Development/Libraries/hsl/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HSL
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Development/Libraries/ipopt/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    IPOPT
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Development/Libraries/lapack/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    LAPACK and ScaLAPACK
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Development/Libraries/libsci/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    LibSci
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Development/Libraries/mkl/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    MKL
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_8_7" >
+        
+          <label class="md-nav__link" for="__nav_3_8_7" id="__nav_3_8_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Performance Tools
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_8_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_8_7">
+            <span class="md-nav__icon md-icon"></span>
+            Performance Tools
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_8_7_1" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../Development/Performance_Tools/Intel/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Intel Parallel Studio
+  </span>
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_3_8_7_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_8_7_1">
+            <span class="md-nav__icon md-icon"></span>
+            Intel Parallel Studio
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_8_8" >
+        
+          <label class="md-nav__link" for="__nav_3_8_8" id="__nav_3_8_8_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Debug Tools
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_8_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_8_8">
+            <span class="md-nav__icon md-icon"></span>
+            Debug Tools
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Development/Debug_Tools/gdb/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    GDB
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_8_9" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../Development/Containers/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Containers
+  </span>
+  
+
+            </a>
+            
+              <label class="md-nav__link " for="__nav_3_8_9">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_8_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_8_9">
+            <span class="md-nav__icon md-icon"></span>
+            Containers
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Development/Containers/registres/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Container registries at NREL
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Development/Containers/singularity/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Singularity on Eagle
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_9" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../Viz_Analytics/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Visualization and Analytics
+  </span>
+  
+
+            </a>
+            
+              <label class="md-nav__link " for="__nav_3_9">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_9">
+            <span class="md-nav__icon md-icon"></span>
+            Visualization and Analytics
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Viz_Analytics/virtualgl_fastx/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    VirtualGL and FastX
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Viz_Analytics/avizo/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Avizo
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Viz_Analytics/paraview/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Paraview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Viz_Analytics/visit/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    VisIT
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_10" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../Machine_Learning/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Machine Learning
+  </span>
+  
+
+            </a>
+            
+              <label class="md-nav__link " for="__nav_3_10">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_10">
+            <span class="md-nav__icon md-icon"></span>
+            Machine Learning
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Machine_Learning/Reinforcement_Learning/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Reinforcement Learning
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Machine_Learning/TensorBoard/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    TensorBoard
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Machine_Learning/Containerized_TensorFlow/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Containerized TensorFlow
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Kestrel Friendly Users
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Kestrel Friendly Users
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../Friendly_User/Getting_Started/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Getting Started
+  </span>
+  
+
+            </a>
+            
+              <label class="md-nav__link " for="__nav_4_1">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_1">
+            <span class="md-nav__icon md-icon"></span>
+            Getting Started
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Friendly_User/Getting_Started/known_issues/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Known Issues
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" >
+        
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Environments
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            Environments
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Friendly_User/Environments/cray_overview/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cray Programming Environment
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2_2" >
+        
+          <label class="md-nav__link" for="__nav_4_2_2" id="__nav_4_2_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Toolchains
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            Toolchains
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Friendly_User/Environments/Toolchains/intel/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Intel
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" >
+        
+          <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Applications
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            Applications
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Friendly_User/Applications/vasp/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    VASP
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#accessing-vasp-on-nrels-hpc-clusters" class="md-nav__link">
+    Accessing VASP on NREL's HPC Clusters
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#supported-versions" class="md-nav__link">
+    Supported Versions
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#getting-started" class="md-nav__link">
+    Getting Started
+  </a>
+  
+    <nav class="md-nav" aria-label="Getting Started">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#input-files" class="md-nav__link">
+    Input Files
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-job-scripts" class="md-nav__link">
+    Example Job Scripts
+  </a>
+  
+    <nav class="md-nav" aria-label="Example Job Scripts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#eagle" class="md-nav__link">
+    Eagle
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#swift" class="md-nav__link">
+    Swift
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vermilion" class="md-nav__link">
+    Vermilion
+  </a>
+  
+    <nav class="md-nav" aria-label="Vermilion">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#workarounds" class="md-nav__link">
+    Workarounds
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    Troubleshooting
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#performance-recommendations" class="md-nav__link">
+    Performance Recommendations
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+  <h1>VASP</h1>
+
+<p>VASP computes an approximate solution to the many-body Schrödinger equation, either within density functional theory (DFT), solving the Kohn-Sham equations, or within the Hartree-Fock (HF) approximation, solving the Roothaan equations. Hybrid functionals that mix the Hartree-Fock approach with density functional theory are implemented as well. Furthermore, Green's functions methods (GW quasiparticles, and ACFDT-RPA) and many-body perturbation theory (2nd-order Møller-Plesset) are available in VASP.</p>
+<p>In VASP, central quantities, like the one-electron orbitals, the electronic charge density, and the local potential are expressed in plane wave basis sets. The interactions between the electrons and ions are described using norm-conserving or ultrasoft pseudopotentials, or the projector-augmented-wave method.</p>
+<p>To determine the electronic ground state, VASP makes use of efficient iterative matrix diagonalization techniques, like the residual minimization method with direct inversion of the iterative subspace (RMM-DIIS) or blocked Davidson algorithms. These are coupled to highly efficient Broyden and Pulay density mixing schemes to speed up the self-consistency cycle.</p>
+<p>For further details, documentation, forums, and FAQs, see the <a href="https://www.vasp.at/">VASP website</a>.</p>
+<h2 id="accessing-vasp-on-nrels-hpc-clusters">Accessing VASP on NREL's HPC Clusters<a class="headerlink" href="#accessing-vasp-on-nrels-hpc-clusters" title="Permanent link">#</a></h2>
+<p>The VASP license requires users to be a member of a "workgroup" defined by the University of Vienna or Materials Design. If you are receiving "Permission denied" errors when trying to use VASP, you must be made part of the "vasp" Linux group first. To join, please contact <a href="mailto:hpc-help@nrel.gov">HPC Help</a> with the following information:</p>
+<ul>
+<li>Your name</li>
+<li>The workgroup PI</li>
+<li>Whether you are licensed through Vienna (academic) or Materials Design, Inc. (commercial)</li>
+<li>If licensed through Vienna:<ul>
+<li>The e-mail address under which you are registered with Vienna as a workgroup member (this may not be the e-mail address you used to get an HPC account)</li>
+<li>Your VASP license ID</li>
+</ul>
+</li>
+<li>If licensed through Materials Design:<ul>
+<li>Proof of current licensed status</li>
+</ul>
+</li>
+</ul>
+<p>Once status can be confirmed, we can provide access to our VASP builds. </p>
+<h2 id="supported-versions">Supported Versions<a class="headerlink" href="#supported-versions" title="Permanent link">#</a></h2>
+<p>NREL offers support for VASP 5 and VASP 6 on CPUs as well as GPU builds on certain systems. (See table below for details).</p>
+<ul>
+<li>
+<p>For CPUs, VASP can be built with either Intel compilers/Intel MPI or GNU compilers/Open MPI. In general the Intel MPI builds exhibit fastest performance and are recommended over the Open MPI builds.</p>
+</li>
+<li>
+<p>For GPUs, VASP can be built with Cuda or with OpenACC. The OpenACC GPU-port of VASP was released with VASP 6.2.0, and the Cuda GPU-port of VASP was dropped in VASP 6.3.0. The OpenACC build shows significant performance improvement compared to the Cuda build, but is more susceptible to running out of memory. </p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Eagle</th>
+<th>Swift</th>
+<th>Vermilion</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>VASP 5 (Intel MPI)</td>
+<td>x</td>
+<td></td>
+<td>x</td>
+</tr>
+<tr>
+<td>VASP 6 (Intel MPI)</td>
+<td>x</td>
+<td>x</td>
+<td>x</td>
+</tr>
+<tr>
+<td>VASP 6 (Open MPI)</td>
+<td>x</td>
+<td>x</td>
+<td>x</td>
+</tr>
+<tr>
+<td>GPU VASP (Cuda)</td>
+<td>x</td>
+<td></td>
+<td>x</td>
+</tr>
+<tr>
+<td>GPU VASP (OpenAcc)</td>
+<td>x</td>
+<td></td>
+<td>x</td>
+</tr>
+</tbody>
+</table>
+<p>Three executables have been made available with each build of VASP:</p>
+<ol>
+<li>
+<p><code>vasp_gam</code> is for Gamma-point-only runs typical for large unit cells.</p>
+</li>
+<li>
+<p><code>vasp_std</code> is for general k-point meshes with collinear spins. </p>
+</li>
+<li>
+<p><code>vasp_ncl</code> is for general k-point meshes with non-collinear spins.</p>
+</li>
+</ol>
+<p><code>vasp_gam</code> and <code>vasp_std</code> builds include the alternative optimization and <a href="http://theory.cm.utexas.edu/vtsttools/">transition state theory tools from University of Texas-Austin</a> developed by Graeme Henkelman's group, and <a href="http://vaspsol.mse.ufl.edu/">implicit solvation models from the University of Florida</a> developed by Mathew and Hennig.</p>
+<h2 id="getting-started">Getting Started<a class="headerlink" href="#getting-started" title="Permanent link">#</a></h2>
+<p>VASP is available through modules on Eagle, Swift and Vermilion. Use the command <code>module avail vasp</code> to view the versions of VASP available on each cluster. The module marked with "(D)" is the default module - slurm will choose to load this module if you run the command <code>module load vasp</code>. To load other vasp modules, include the entire module name in the module load command, such as <code>module load vasp/5.4.4_centos77</code>.</p>
+<h3 id="input-files">Input Files<a class="headerlink" href="#input-files" title="Permanent link">#</a></h3>
+<p>To run VASP, the following 4 input files are needed: POSCAR, POTCAR, INCAR, KPOINTS. For more information about VASP input files, see the <a href="https://www.vasp.at/wiki/index.php/Input">VASP wiki</a>.</p>
+<h2 id="example-job-scripts">Example Job Scripts<a class="headerlink" href="#example-job-scripts" title="Permanent link">#</a></h2>
+<h3 id="eagle">Eagle<a class="headerlink" href="#eagle" title="Permanent link">#</a></h3>
+<details class="example">
+<summary>Eagle: VASP 6 (Intel MPI) on CPUs</summary>
+<div class="highlight"><pre><span></span><code>#!/bin/bash
+#SBATCH --job-name=&quot;benchmark&quot;
+#SBATCH --account=myaccount
+#SBATCH --time=4:00:00
+#SBATCH --nodes=1
+
+module purge
+
+#Load Intel MPI VASP build
+ml vasp/6.3.1
+
+srun -n 36 vasp_std &amp;&gt; out
+</code></pre></div>
+</details>
+<details class="example">
+<summary>Eagle: VASP 6 (Open MPI) on CPUs</summary>
+<p><div class="highlight"><pre><span></span><code>#!/bin/bash
+#SBATCH --job-name=&quot;benchmark&quot;
+#SBATCH --account=myaccount
+#SBATCH --time=4:00:00
+#SBATCH --nodes=1
+
+module purge
+
+#Load Open MPI VASP build
+ml vasp/6.1.1-openmpi
+
+srun -n 36 vasp_std &amp;&gt; out
+</code></pre></div>
+Note: the following warning may be printed to the vasp output and can be ignored.
+<div class="highlight"><pre><span></span><code>Note: The following floating-point exceptions are signalling: IEEE_UNDERFLOW_FLAG IEEE_DENORMAL
+Note: The following floating-point exceptions are signalling: IEEE_UNDERFLOW_FLAG
+</code></pre></div></p>
+</details>
+<details class="example">
+<summary>Eagle: VASP 5 (Intel MPI) on CPUs</summary>
+<div class="highlight"><pre><span></span><code>#!/bin/bash
+#SBATCH --job-name=&quot;benchmark&quot;
+#SBATCH --account=myaccount
+#SBATCH --time=4:00:00
+#SBATCH --nodes=1
+
+module purge
+
+#Load Intel MPI VASP 5 build
+ml vasp/5.4.4_centos77
+
+srun -n 36 vasp_std &amp;&gt; out
+</code></pre></div>
+</details>
+<details class="example">
+<summary>Eagle: VASP 6 (OpenACC) on GPUs</summary>
+<p><div class="highlight"><pre><span></span><code>#!/bin/bash
+#SBATCH --job-name=vasp_gpu
+#SBATCH --time=1:00:00
+#SBATCH --error=std.err
+#SBATCH --output=std.out
+#SBATCH --nodes=1
+#SBATCH --gpus-per-node=2
+#SBATCH --gpu-bind=map_gpu:0,1
+#SBATCH --account=myaccount
+
+#To run on multiple nodes, change the last two SBATCH lines:
+##SBATCH --nodes=4
+##SBATCH --gpu-bind=map_gpu:0,1,0,1,0,1,0,1 #one set of &quot;0,1&quot; per node
+
+module purge
+
+#Load the OpenACC build of VASP
+ml vasp/6.3.1-nvhpc_acc
+
+#Load some additional modules
+module use /nopt/nrel/apps/220511a/modules/lmod/linux-centos7-x86_64/gcc/12.1.0
+ml fftw nvhpc
+
+mpirun -npernode 2 vasp_std &amp;&gt; out
+</code></pre></div>
+Note: the following warning may be printed to the vasp output and can be ignored so long as the run produces the expected results.
+<div class="highlight"><pre><span></span><code>Warning: ieee_invalid is signaling
+Warning: ieee_divide_by_zero is signaling
+Warning: ieee_underflow is signaling
+Warning: ieee_inexact is signaling
+FORTRAN STOP
+</code></pre></div></p>
+</details>
+<details class="example">
+<summary>Eagle: VASP 6 (Cuda) on GPUs</summary>
+<p>To run the Cuda build of VASP on Eagle's GPUs, we can call the <code>vasp_gpu</code> exectuable in a module for a build of VASP older than 6.3.0. To use both GPUs per node, make sure to set <code>#SBATCH --gpus-per-node=2</code> and <code>#SBATCH --ntasks-per-node=2</code>.</p>
+<div class="highlight"><pre><span></span><code>#!/bin/bash
+#SBATCH --job-name=&quot;benchmark&quot;
+#SBATCH --account=myaccount
+#SBATCH --time=4:00:00
+#SBATCH --nodes=1 
+#SBATCH --gpus-per-node=2
+#SBATCH --ntasks-per-node=2
+
+module purge
+
+#Load Intel MPI VASP build
+ml vasp/6.1.2
+
+srun -n 2 vasp_gpu &amp;&gt; out
+</code></pre></div>
+</details>
+<h3 id="swift">Swift<a class="headerlink" href="#swift" title="Permanent link">#</a></h3>
+<details class="example">
+<summary>Swift: VASP 6 (Intel MPI) on CPUs</summary>
+<div class="highlight"><pre><span></span><code>#!/bin/bash
+#SBATCH --job-name=&quot;benchmark&quot;
+#SBATCH --account=myaccount
+#SBATCH --time=4:00:00
+#SBATCH --ntasks-per-node=64
+#SBATCH --nodes=1
+
+#Set --exclusive if you would like to prevent any other jobs from running on the same nodes (including your own)
+#You will be charged for the full node regardless of the fraction of CPUs/node used
+#SBATCH --exclusive
+
+module purge
+
+#Load Intel MPI VASP build and necessary modules
+ml vaspintel 
+ml slurm/21-08-1-1-o2xw5ti 
+ml gcc/9.4.0-v7mri5d 
+ml intel-oneapi-compilers/2021.3.0-piz2usr 
+ml intel-oneapi-mpi/2021.3.0-hcp2lkf 
+ml intel-oneapi-mkl/2021.3.0-giz47h4
+
+srun -n 64 vasp_std &amp;&gt; out
+</code></pre></div>
+</details>
+<details class="example">
+<summary>Swift: VASP 6 (Intel MPI) on CPUs: run multiple jobs on the same node(s)</summary>
+<p>The following script launches two instances of <code>srun vasp_std</code> on the same node using an array job. Each job will be constricted to 32 cores on the node. 
+<div class="highlight"><pre><span></span><code>#!/bin/bash
+#SBATCH --job-name=&quot;benchmark&quot;
+#SBATCH --account=myaccount
+#SBATCH --time=4:00:00
+#SBATCH --ntasks-per-node=32
+#SBATCH --nodes=1
+
+#Set --exclusive=user if you would like to prevent anyone else from running on the same nodes as you
+#You will be charged for the full node regardless of the fraction of CPUs/node used
+#SBATCH --exclusive=user
+
+#Set how many jobs you would like to run at the same time as an array job
+#In this example, an array of 2 jobs will be run at the same time. This script will be run once for each job.
+#SBATCH --array=1-2
+
+#The SLURM_ARRAY_TASK_ID variable can be used to modify the parameters of the distinct jobs in the array.
+#In the case of array=1-2, the first job will have SLURM_ARRAY_TASK_ID=1, and the second will have SLURM_ARRAY_TASK_ID=2.
+#For example, you could assign different input files to runs 1 and 2 by storing them in directories input_1 and input_2 and using the following code:
+
+mkdir run_${SLURM_ARRAY_TASK_ID}
+cd run_${SLURM_ARRAY_TASK_ID}
+cp ../input_${SLURM_ARRAY_TASK_ID}/POSCAR .
+cp ../input_${SLURM_ARRAY_TASK_ID}/POTCAR .
+cp ../input_${SLURM_ARRAY_TASK_ID}/INCAR .
+cp ../input_${SLURM_ARRAY_TASK_ID}/KPOINTS .
+
+#Now load vasp and run the job...
+
+module purge
+
+#Load Intel MPI VASP build and necessary modules
+ml vaspintel 
+ml slurm/21-08-1-1-o2xw5ti 
+ml gcc/9.4.0-v7mri5d 
+ml intel-oneapi-compilers/2021.3.0-piz2usr 
+ml intel-oneapi-mpi/2021.3.0-hcp2lkf 
+ml intel-oneapi-mkl/2021.3.0-giz47h4
+
+srun -n 32 vasp_std &amp;&gt; out
+</code></pre></div></p>
+</details>
+<details class="example">
+<summary>Swift: VASP 6 (Intel MPI) on CPUs: run a single job on a node shared with other users</summary>
+<p>The following script launches <code>srun vasp_std</code> on only 32 cores on a single node. The other 32 cores remain open for other users to use. You will only be charged for half of the node hours. </p>
+<div class="highlight"><pre><span></span><code>#!/bin/bash
+#SBATCH --job-name=&quot;benchmark&quot;
+#SBATCH --account=myaccount
+#SBATCH --time=4:00:00
+#SBATCH --ntasks-per-node=32
+#SBATCH --nodes=1
+
+#To make sure that you are only being charged for the CPUs your job is using, set mem=2GB*CPUs/node
+#--mem sets the memory used per node
+#SBATCH --mem=64G
+
+module purge
+
+#Load Intel MPI VASP build and necessary modules
+ml vaspintel 
+ml slurm/21-08-1-1-o2xw5ti 
+ml gcc/9.4.0-v7mri5d 
+ml intel-oneapi-compilers/2021.3.0-piz2usr 
+ml intel-oneapi-mpi/2021.3.0-hcp2lkf 
+ml intel-oneapi-mkl/2021.3.0-giz47h4
+
+srun -n 32 vasp_std &amp;&gt; out
+</code></pre></div>
+</details>
+<details class="example">
+<summary>Swift: VASP 6 (Open MPI) on CPUs</summary>
+<div class="highlight"><pre><span></span><code>#!/bin/bash
+#SBATCH --job-name=&quot;benchmark&quot;
+#SBATCH --account=myaccount
+#SBATCH --time=4:00:00
+#SBATCH --ntasks-per-node=64
+#SBATCH --nodes=1
+
+#Set --exclusive if you would like to prevent any other jobs from running on the same nodes (including your own)
+#You will be charged for the full node regardless of the fraction of CPUs/node used
+#SBATCH --exclusive
+
+module purge
+
+#Load OpenMPI VASP build and necessary modules
+ml vasp 
+ml slurm/21-08-1-1-o2xw5ti 
+ml openmpi/4.1.1-6vr2flz
+
+srun -n 64 vasp_std &amp;&gt; out
+</code></pre></div>
+</details>
+<details class="example">
+<summary>Swift: VASP 6 (Open MPI) on CPUs: run multiple jobs on the same node(s)</summary>
+<div class="highlight"><pre><span></span><code>#!/bin/bash
+#SBATCH --job-name=&quot;benchmark&quot;
+#SBATCH --account=myaccount
+#SBATCH --time=4:00:00
+#SBATCH --ntasks-per-node=32
+#SBATCH --nodes=1
+
+#Set --exclusive=user if you would like to prevent anyone else from running on the same nodes as you
+#You will be charged for the full node regardless of the fraction of CPUs/node used
+#SBATCH --exclusive=user
+
+#Set how many jobs you would like to run at the same time as an array job
+#In this example, an array of 2 jobs will be run at the same time. This script will be run once for each job.
+#SBATCH --array=1-2
+
+#The SLURM_ARRAY_TASK_ID variable can be used to modify the parameters of the distinct jobs in the array.
+#In the case of array=1-2, the first job will have SLURM_ARRAY_TASK_ID=1, and the second will have SLURM_ARRAY_TASK_ID=2.
+#For example, you could assign different input files to runs 1 and 2 by storing them in directories input_1 and input_2 and using the following code:
+
+mkdir run_${SLURM_ARRAY_TASK_ID}
+cd run_${SLURM_ARRAY_TASK_ID}
+cp ../input_${SLURM_ARRAY_TASK_ID}/POSCAR .
+cp ../input_${SLURM_ARRAY_TASK_ID}/POTCAR .
+cp ../input_${SLURM_ARRAY_TASK_ID}/INCAR .
+cp ../input_${SLURM_ARRAY_TASK_ID}/KPOINTS .
+
+#Now load vasp and run the job...
+
+module purge
+
+#Load OpenMPI VASP build and necessary modules
+ml vasp 
+ml slurm/21-08-1-1-o2xw5ti 
+ml openmpi/4.1.1-6vr2flz
+
+srun -n 32 vasp_std &amp;&gt; out
+</code></pre></div>
+</details>
+<details class="example">
+<summary>Swift: VASP 6 (Open MPI) on CPUs: run a single job on a node shared with other users</summary>
+<p>The following script launches <code>srun vasp_std</code> on only 32 cores on a single node. The other 32 cores remain open for other users to use. You will only be charged for half of the node hours. </p>
+<div class="highlight"><pre><span></span><code>#!/bin/bash
+#SBATCH --job-name=&quot;benchmark&quot;
+#SBATCH --account=myaccount
+#SBATCH --time=4:00:00
+#SBATCH --ntasks-per-node=32
+#SBATCH --nodes=1
+
+#To make sure that you are only being charged for the CPUs your job is using, set mem=2GB*CPUs/node
+#--mem sets the memory used per node
+#SBATCH --mem=64G
+
+module purge
+
+#Load OpenMPI VASP build and necessary modules
+ml vasp 
+ml slurm/21-08-1-1-o2xw5ti 
+ml openmpi/4.1.1-6vr2flz
+
+srun -n 32 vasp_std &amp;&gt; out
+</code></pre></div>
+</details>
+<h3 id="vermilion">Vermilion<a class="headerlink" href="#vermilion" title="Permanent link">#</a></h3>
+<details class="example">
+<summary>Vermilion: VASP 6 (Intel MPI) on CPUs</summary>
+<div class="highlight"><pre><span></span><code>#!/bin/bash
+#SBATCH --job-name=vasp
+#SBATCH --nodes=1
+#SBATCH --time=8:00:00
+#SBATCH --error=std.err
+#SBATCH --output=std.out
+#SBATCH --partition=lg
+#SBATCH --exclusive
+#SBATCH --account=myaccount
+
+module purge
+ml vasp/6.3.1
+
+source /nopt/nrel/apps/220525b/myenv.2110041605
+ml intel-oneapi-compilers/2022.1.0-k4dysra
+ml intel-oneapi-mkl/2022.1.0-akthm3n
+ml intel-oneapi-mpi/2021.6.0-ghyk7n2
+
+# some extra lines that have been shown to improve VASP reliability on Vermilion
+ulimit -s unlimited
+export UCX_TLS=tcp,self
+export OMP_NUM_THREADS=1
+ml ucx
+
+srun --mpi=pmi2 -n 60 vasp_std
+
+# If the multi-node calculations are breaking, replace the srun line with this line
+# I_MPI_OFI_PROVIDER=tcp mpirun -iface ens7 -np 60 vasp_std
+</code></pre></div>
+</details>
+<details class="example">
+<summary>Vermilion: VASP 6 (Open MPI) on CPUs</summary>
+<div class="highlight"><pre><span></span><code>#!/bin/bash
+#SBATCH --job-name=vasp
+#SBATCH --nodes=1
+#SBATCH --time=8:00:00
+#SBATCH --error=std.err
+#SBATCH --output=std.out
+#SBATCH --partition=lg
+#SBATCH --exclusive
+#SBATCH --account=myaccount
+
+module purge
+ml gcc
+ml vasp/6.1.1-openmpi
+
+# some extra lines that have been shown to improve VASP reliability on Vermilion
+ulimit -s unlimited
+export UCX_TLS=tcp,self
+export OMP_NUM_THREADS=1
+ml ucx
+
+# lines to set &quot;ens7&quot; as the interconnect network
+module use /nopt/nrel/apps/220525b/level01/modules/lmod/linux-rocky8-x86_64/gcc/12.1.0
+module load openmpi
+OMPI_MCA_param=&quot;btl_tcp_if_include ens7&quot;
+
+srun --mpi=pmi2 -n 60 vasp_std
+</code></pre></div>
+</details>
+<details class="example">
+<summary>Vermilion: VASP 5 (Intel MPI) on CPUs</summary>
+<div class="highlight"><pre><span></span><code>#!/bin/bash
+#SBATCH --job-name=vasp
+#SBATCH --nodes=1
+#SBATCH --time=8:00:00
+##SBATCH --error=std.err
+##SBATCH --output=std.out
+#SBATCH --partition=lg
+#SBATCH --exclusive
+#SBATCH --account=myaccount
+
+module purge
+
+ml vasp/5.4.4
+
+source /nopt/nrel/apps/220525b/myenv.2110041605
+ml intel-oneapi-compilers/2022.1.0-k4dysra
+ml intel-oneapi-mkl/2022.1.0-akthm3n
+ml intel-oneapi-mpi/2021.6.0-ghyk7n2
+
+# some extra lines that have been shown to improve VASP reliability on Vermilion
+ulimit -s unlimited
+export UCX_TLS=tcp,self
+export OMP_NUM_THREADS=1
+ml ucx
+
+srun --mpi=pmi2 -n 60 vasp_std
+
+# If the multi-node calculations are breaking, replace the srun line with this line
+# I_MPI_OFI_PROVIDER=tcp mpirun -iface ens7 -np 60 vasp_std
+</code></pre></div>
+</details>
+<details class="example">
+<summary>Vermilion: VASP 6 (OpenACC) on GPUs</summary>
+<div class="highlight"><pre><span></span><code>#!/bin/bash
+#SBATCH --job-name=vasp
+#SBATCH --nodes=2
+#SBATCH --time=1:00:00
+##SBATCH --error=std.err
+##SBATCH --output=std.out
+#SBATCH --partition=gpu
+#SBATCH --gpu-bind=map_gpu:0,1,0,1
+#SBATCH --exclusive
+#SBATCH --account=myaccount
+
+# Load the OpenACC build of VASP
+ml vasp/6.3.1-nvhpc_acc
+
+# Load some additional modules
+module use  /nopt/nrel/apps/220421a/modules/lmod/linux-rocky8-x86_64/gcc/11.3.0/
+ml nvhpc
+ml fftw
+
+mpirun -npernode 1 vasp_std &gt; vasp.$SLURM_JOB_ID
+</code></pre></div>
+</details>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>On Vermilion, VASP runs more performantly on a single node. Many issues have been reported for running VASP on multiple nodes, especially when requesting all available cores in each node. In order for MPI to work reliably on Vermilion, it is necessary to specify the interconnect network that Vermilion should use to communicate between nodes. This is documented below. Please see the <a href="./#performance-recommendations">Performance Recommendations section</a> for more details.</p>
+</div>
+<h4 id="workarounds">Workarounds<a class="headerlink" href="#workarounds" title="Permanent link">#</a></h4>
+<p>If your multi-node Intel MPI VASP job is crashing on Vermilion, try replacing your srun line with the following mpirun run line. <code>-iface ens7</code> sets ens7 as the interconnect. </p>
+<p><div class="highlight"><pre><span></span><code>I_MPI_OFI_PROVIDER=tcp mpirun -iface ens7 -np 16 vasp_std
+</code></pre></div>
+If your multi-node Open MPI VASP job is crashing on Vermilion, replace a call to load an openmpi module with the following lines. The OMPI_MCA_param variable sets ens7 as the interconnect. </p>
+<div class="highlight"><pre><span></span><code>module use /nopt/nrel/apps/220525b/level01/modules/lmod/linux-rocky8-x86_64/gcc/12.1.0
+module load openmpi
+OMPI_MCA_param=&quot;btl_tcp_if_include ens7&quot;
+</code></pre></div>
+<h2 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">#</a></h2>
+<p>Known issues: </p>
+<ul>
+<li>
+<p>VASP on Vermilion can crash on multi-node jobs (see <a href="./#workarounds">Workarounds on Vermilion section</a>) </p>
+</li>
+<li>
+<p>OpenMPI more stable for multi-node jobs</p>
+</li>
+<li>
+<p>OpenACC build eats up more memory but is faster (Cuda build doesn't eat up as much memory)</p>
+</li>
+<li>
+<p>VASP 6.1.1 crashes for HSE calculations (due to specific version of compiler and vasp) - use a newer version instead</p>
+</li>
+</ul>
+<h2 id="performance-recommendations">Performance Recommendations<a class="headerlink" href="#performance-recommendations" title="Permanent link">#</a></h2>
+<p>Studies have been carried out to evaluate the performance of VASP on Swift and Eagle using NREL's benchmarks. The inputs files for the two benchmarks are located in NREL's benchmark repository for VASP: <a href="https://github.com/NREL/ESIFHPC3/tree/master/VASP">ESIF VASP Benchmarks</a>. </p>
+<p>Benchmark 1 is a system of 16 atoms (Cu<sub>4</sub>In<sub>4</sub>Se<sub>8</sub>) and represents a typical high-accuracy band structure calculation, involving bootstrapping from an initial approximate GGA wavefunction, through a hybrid HSE function, to a final band structure from a GW calculation. Benchmark 2 is a system of 519 atoms (Ag<sub>504</sub>C<sub>4</sub>H<sub>10</sub>S<sub>1</sub>) and represents a typical surface catalysis study calculation, with large unit cell and k-point sampling limited to the Gamma point. A single model chemistry (DFT functional and plane-wave basis) is employed, and strong scaling with respect to MPI rank count is of interest. The input files can be accessed in the <a href="https://github.com/NREL/ESIFHPC3/tree/master/VASP/bench1/input">bench1</a> and <a href="https://github.com/NREL/ESIFHPC3/tree/master/VASP/bench2/input">bench2</a> folders.</p>
+<p>Below, a few performance recommendations around resource requests and MPI are listed for each cluster.</p>
+<details class="example">
+<summary>Eagle</summary>
+<p>Intel MPI is recommended over Open MPI. Using an Intel MPI build of VASP and running over Intel MPI, Benchmark 2 ran in an average of 50% of the time as the same calculations using an Open MPI build of VASP over Open MPI. For Benchmark 1, Intel MPI calculations ran in an average of 63.5% of the time as Open MPI calculcations. </p>
+</details>
+<details class="example">
+<summary>Swift</summary>
+<p>Intel MPI is recommended over Open MPI for all VASP calculations on Swift. Using an Intel MPI build of VASP and running over Intel MPI, Benchmark 2 ran in average of 76%, 72% and 46% of the time as the same calculations using an Open MPI build of VASP over Open MPI on 32, 64 and 128 CPUs/node, respectively. For Benchmark 1, Intel MPI calculations ran in an average of 76.89% of the time as Open MPI calculcations. </p>
+<p>On Swift, each node has 64 physical cores, and each core is subdivided into two virtual cores in a process that is identical to hyperthreading. Because of this, up to 128 cores can be requested from a single Swift node, but each core will only represent half of a physical core. Unlike on Eagle, Swift charges for only the portion of the node requested by a job, as long as the memory requested for the job is no more than 2GB/CPU. If the entire 256GB of memory is requested per node, but only half of the CPUs per node are requested, you will be charged for the full node. Swift charges 5 AUs/hour when running on 128 CPUs (one full node), so running on 32 CPUs, for example, would charge only (32/128) * 5 AUs/hour rather than the full 5 AUs/node-hour. </p>
+<p>On Swift, VASP is most efficiently run on partially full nodes. 32 CPUs/node was found to have the fastest runtime/core, followed by 64 CPUs/node and 128 CPUs/node. Compared to jobs on 64 CPUs/node, jobs on 32 CPUs/node using the same total number of cores ran in 70%-90% of the 64 CPUs/node runtime.</p>
+<p>Unlike on Eagle, multiple jobs can run on the same nodes on Swift. This runtime performance was simualted by the "shared" nodes in the graphs. (Find scripts for running multiple VASP jobs on the same nodes in <a href="./#swift">this section</a>). So if you are only using a fraction of a node, other users' jobs could be assigned to the rest of the node, which we suspect might deteriorate the performance since "shared" nodes in the graphs below are shown to have the slowest rates. Setting "#SBATCH --exclusive" in your run script prevents other users from using the same node as you, but you will be charged the full 5AUs/node, regardless of the number of CPUs/node you are using. In some cases, running on 32 CPUs/node with the --exclusive flag set might minimize your allocation charge. For example, in the "Open MPI, performance/node" graph, we see that 32 CPUs/node shows consistently the fastest runtime per node for all jobs using 2 or more nodes, so using 32 CPUs/node on 2 nodes could complete faster than 64 CPUs/node on 2 nodes. </p>
+<p>Please see the graphs in the <a href="https://github.com/NREL/HPC/tree/master/applications/vasp/Performance%20Study%202">VASP Performance Benchmark Study</a> for more details on how to help identify the number of CPUs/node that will be most efficient for running your jobs. </p>
+</details>
+<details class="example">
+<summary>Vermilion</summary>
+<p>VASP runs faster on 1 node than on 2 nodes. In some cases, VASP runtimes on 2 nodes have been observed to be double (or more) the run times on a single node. Many issues have been reported for running VASP on multiple nodes, especially when requesting all available cores in each node. In order for MPI to work reliably on Vermilion, it is necessary to specify the interconnect network that Vermilion should use to communicate between nodes. This is documented in the <a href="./#example-job-scripts">example run scripts</a>. Different solutions exist for Open MPI and Intel MPI. The documented recommendations for setting the interconnect network have been shown to work well for multi-node jobs on 2 nodes, but aren't guaranteed to produce successful multi-node runs on 4 nodes.  The Open MPI multi-node jobs are more reliable on Vermilion, but Intel MPI VASP jobs show better runtime performance. If many cores are needed for your VASP calculation, it is recommended to run VASP on a singe node in the lg partition (60 cores/node), which provides the largest numbers of cores per node.</p>
+</details>
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+<footer class="md-footer">
+
+  <!-- Link to previous and/or next page -->
+  
+    <nav
+      class="md-footer__inner md-grid"
+      aria-label="footer.title"
+    >
+
+      <!-- Link to previous page -->
+      
+        
+        <a
+          href="../starccm/"
+          class="md-footer__link md-footer__link--prev"
+          aria-label="Previous: STAR-CCM+"
+          rel="prev"
+        >
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              STAR-CCM+
+            </div>
+          </div>
+        </a>
+      
+
+      <!-- Link to next page -->
+      
+        
+        <a
+          href="../wrf/"
+          class="md-footer__link md-footer__link--next"
+          aria-label="Next: WRF"
+          rel="next"
+        >
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              WRF
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+	<a href="https://www.nrel.gov/computational-science/"
+	   title="Computational Science at NREL">Computational Science at NREL</a><br>
+	<a href="https://www.nrel.gov/hpc/about-hpc.html" target="_blank"
+	   title="About NREL High-Performance Computing">About NREL High-Performance Computing</a><br>
+	<a href="https://www.nrel.gov/hpc/contact-us.html" target="_blank"
+	   title="Contact Us">Contact Us</a><br>
+      </div>
+    </div>
+  </div>
+<footer>
+
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.indexes"], "search": "../../../assets/javascripts/workers/search.dfff1995.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.78eede0e.min.js"></script>
+      
+    
+  </body>
+</html>
